@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose')
+const { Schema, model } = require('mongoose');
 
 const Product = model(
 	'Product',
@@ -12,8 +12,8 @@ const Product = model(
 		price: { new: Number, old: Number },
 		specialOffers: Boolean,
 		stocks: Boolean,
-		isProductPage: Boolean
-	})
-)
+		isProductPage: Boolean,
+	}),
+);
 
-module.exports = Product
+module.exports = Product;
