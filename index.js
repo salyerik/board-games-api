@@ -14,8 +14,8 @@ app.use('/api', productRouter);
 const start = async () => {
 	try {
 		await app.listen(PORT);
-		await mongoose.connect(process.env.DB_URL);
-		console.log('Server is running...');
+		await mongoose.set('strictQuery', false).connect(process.env.DB_URL);
+		console.log(`Server is running on Port: ${PORT}`);
 	} catch (error) {
 		console.log(error.message);
 	}
