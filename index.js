@@ -11,10 +11,11 @@ app.use(express.json());
 app.use(corsMiddleware);
 app.use('/api', productRouter);
 
-const start = async () => {
+const start = () => {
 	try {
-		await app.listen(PORT);
-		await mongoose.set('strictQuery', false).connect(process.env.DB_URL);
+		mongoose.set('strictQuery', false).connect(process.env.DB_URL, () => {
+			app.listen(PORT);
+		});
 		console.log(`Server is running on Port: ${PORT}`);
 	} catch (error) {
 		console.log(error.message);
